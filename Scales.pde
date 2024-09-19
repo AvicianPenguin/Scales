@@ -1,11 +1,48 @@
-void setup() {
-  size(500, 500);  //feel free to change the size
-  noLoop(); //stops the draw() function from repeating
+//these are scales 
+void setup(){
+  size(600,600);
 }
-void draw() {
-  //your code here
+  
+void draw(){
+boolean shift = true;
+for(int y = -30; y < 650; y+=25)
+{
+  for(int x = -10; x<650; x+=60)
+  {
+    if(shift == true)
+      scale(x+29,y);
+    else
+      scale(x,y);
+    
+  }
+  if(shift == true)
+    shift = false;
+  else
+    shift = true;
 }
-void scale(int x, int y) {
-  //your code here
+    
+}
+
+void scale(int x, int y){
+  noStroke();
+  triangle(x,y,x+23,y-30,x-23,y-30);
+  noFill();
+  stroke(1);
+  beginShape();
+  curveVertex(x,y);
+  curveVertex(x,y);
+  curveVertex(x-10,y-20);
+  curveVertex(x-25,y-30);
+  curveVertex(x-25,y-30);
+  endShape();
+  beginShape();
+  curveVertex(x,y);
+  curveVertex(x,y);
+  curveVertex(x+10,y-20);
+  curveVertex(x+25,y-30);
+  curveVertex(x+25,y-30);
+  endShape();
+  fill(13+((int)(Math.random()*20)),152+((int)(Math.random()*20)),186+((int)(Math.random()*20)));
+  arc(x,y-30,50,50,PI,2*PI);
 }
 
